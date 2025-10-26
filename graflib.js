@@ -306,4 +306,47 @@ export function skala(titik, S, pusat = { x: 0, y: 0 }) {
     let titik_baru = translasi(titik_skala, { x: pusat.x, y: pusat.y });
     
     return titik_baru;
+    
+}
+
+
+export function draw_function(func, xMin, xMax, step, color, scaleX = 1, scaleY = 1, offsetX = 0, offsetY = 0) {
+    const points = [];
+    
+    for (let x = xMin; x <= xMax; x += step) {
+        const y = func(x);
+        
+        if (!isNaN(y) && isFinite(y)) {
+            const screenX = offsetX + x * scaleX;
+            const screenY = offsetY - y * scaleY;
+            points.push({ x: screenX, y: screenY });
+        }
+    }
+    
+    for (let i = 0; i < points.length - 1; i++) {
+        const x1 = Math.round(points[i].x);
+        const y1 = Math.round(points[i].y);
+        const x2 = Math.round(points[i + 1].x);
+        const y2 = Math.round(points[i + 1].y);
+        
+        if (x1 >= 0 && y1 >= 0 && x1 < canvas_handler.width && y1 < canvas_handler.height &&
+            x2 >= 0 && y2 >= 0 && x2 < canvas_handler.width && y2 < canvas_handler.height) {
+            dda_line(x1, y1, x2, y2, color);
+        }
+    }
+}
+
+export function draw_axis(originX, originY, color = { r: 0, g: 0, b: 0 }) {
+    dda_line(0, originY, canvas_handler.width, originY, color);
+    dda_line(originX, 0, originX, canvas_handler.height, color);
+}
+
+export function draw_grid(originX, originY, spacing, color = { r: 200, g: 200, b: 200 }) {
+    for (let x = originX % spacing; x < canvas_handler.width; x += spacing) {
+        dda_line(x, 0, x, canvas_handler.height, color);
+    }
+    
+    for (let y = originY % spacing; y < canvas_handler.height; y += spacing) {
+        dda_line(0, y, canvas_handler.width, y, color);
+    }
 }
