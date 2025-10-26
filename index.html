@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Visualisasi Merge Sort - Graflib</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="container">
+        <h1>Visualisasi Merge Sort (Graflib)</h1>
+
+
+        <section class="controls">
+            <div class="left">
+                <button id="btn-random">Random</button>
+                <button id="btn-reset">Reset</button>
+                <input id="input-array" placeholder="Masukkan arr, contoh: 5,2,9,1" />
+                <button id="btn-load">Load</button>
+            </div>
+
+
+            <div class="right">
+                <button id="btn-step">Step</button>
+                <button id="btn-play">Play</button>
+                <label>Speed <input id="speed" type="range" min="50" max="1500" value="300"></label>
+            </div>
+        </section>
+
+
+        <canvas id="myCanvas" width="900" height="420"></canvas>
+
+
+        <section class="legend">
+            <p>Interaksi: klik sebuah titik untuk mengubah nilainya; tahan-dan-drag untuk menggeser.</p>
+        </section>
+    </main>
+
+
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+:root {
+    --bg: #0f1724;
+    --card: #0b1220;
+    --accent: #7dd3fc
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    font-family: system-ui, Segoe UI, Roboto, 18px;
+    color: #e6eef8;
+    background: linear-gradient(180deg, #071021, #07142a);
+    margin: 0;
+    padding: 24px
+}
+
+.container {
+    max-width: 980px;
+    margin: 0 auto
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 12px
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 12px
+}
+
+.controls .left,
+.controls .right {
+    display: flex;
+    gap: 8px;
+    align-items: center
+}
+
+button {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background: #0ea5a3;
+    color: white;
+    cursor: pointer
+}
+
+button:active {
+    transform: translateY(1px)
+}
+
+input[type=text],
+input[type=range] {
+    padding: 6px;
+    border-radius: 8px
+}
+
+canvas {
+    display: block;
+    border-radius: 8px;
+    background: #fff;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6)
+}
+
+.legend {
+    margin-top: 10px;
+    color: #bcd
+}
