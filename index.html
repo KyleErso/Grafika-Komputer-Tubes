@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Visualisasi Bubble Sort</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Bubble Sort Visualizer</title>
 </head>
 <body>
-  <h2>Visualisasi Algoritma Bubble Sort</h2>
-  <p>Masukkan angka (pisahkan dengan koma):</p>
-  <input id="inputData" type="text" value="5,3,8,4,2,7">
-  <button id="btnMulai">Mulai Sorting</button>
-  <button id="btnAcak">Acak Ulang</button>
+  <input id="inputData" placeholder="Contoh: 5,3,2,4,1">
+  <button id="btnAcak">Acak</button>
+  <button id="btnMulai">Mulai</button>
+  <p id="info"></p>
+  <canvas id="kanvas" width="600" height="400" style="border:1px solid black;"></canvas>
 
-  <div id="info">Klik "Mulai Sorting" untuk melihat prosesnya</div>
-
-  <canvas id="kanvas" width="700" height="400"></canvas>
-
-  <script type="module" src="lib/graflib.js"></script>
-  <script type="module" src="lib/transform_matrix.js"></script>
-  <script type="module"src="app.js"></script>
-
+  <!-- Entry module -->
+  <script type="module" src="./app.js"></script>
 </body>
 </html>
