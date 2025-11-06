@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Bubble Sort Visualizer</title>
+    <meta charset="UTF-8">
+    <title>Visualisasi Sorting</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <input id="inputData" placeholder="Contoh: 5,3,2,4,1">
-  <button id="btnAcak">Acak</button>
-  <button id="btnMulai">Mulai</button>
-  <p id="info"></p>
-  <canvas id="kanvas" width="600" height="400" style="border:1px solid black;"></canvas>
 
-  <!-- Entry module -->
-  <script type="module" src="./app.js"></script>
+    <div class="container">
+        <input id="inputData" placeholder="Contoh: 5,3,8,2,7">
+        <button id="btnAcak">Acak</button>
+        <button id="btnMulai">Mulai</button>
+        <p id="info">Silakan masukkan data atau klik 'Acak'.</p>
+        <canvas id="kanvasUtama" width="800" height="400"></canvas>
+    </div>
+
+    <!-- Skrip Utama -->
+    <script type="module" src="app.js"></script>
+
 </body>
 </html>

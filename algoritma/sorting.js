@@ -1,22 +1,21 @@
+export function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-export function quickSort(arr, callback, delay = 200) {
-  if (arr.length <= 1) return arr;
-
-  const pivot = arr[arr.length - 1];
-  const left = [];
-  const right = [];
-
-  for (let i = 0; i < arr.length - 1; i++) {
-    if (arr[i] < pivot) left.push(arr[i]);
-    else right.push(arr[i]);
+export async function startBubbleSort(dataArray, callbacks) {
+  let data = [...dataArray];
+  let n = data.length;
+  for (let i = 0; i < n; i++) {
+    let swapped = false;
+    for (let j = 0; j < n - i - 1; j++) {
+      await callbacks.onCompare(j, j + 1);
+      if (data[j] > data[j + 1]) {
+        await callbacks.onSwap(j, j + 1);
+        [data[j], data[j + 1]] = [data[j + 1], data[j]];
+        swapped = true;
+      }
+    }
+    if (!swapped) break;
   }
-
-  if (callback) callback([...left, pivot, ...right]);
-  return new Promise(resolve => {
-    setTimeout(async () => {
-      const sortedLeft = await quickSort(left, callback, delay);
-      const sortedRight = await quickSort(right, callback, delay);
-      resolve([...sortedLeft, pivot, ...sortedRight]);
-    }, delay);
-  });
+  await callbacks.onFinish(data);
 }
