@@ -3,13 +3,19 @@ import { data, setCanvas } from "./state.js";
 import { gambarArray, animateSwap } from "./render.js";
 import { initDrag } from "./drag.js";
 
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
 async function startBubbleSort(canvas) {
   const n = data.length;
   for (let i = 0; i < n - 1; i++) {
     for (let j = 0; j < n - i - 1; j++) {
       gambarArray(canvas.height, j, j + 1);
       finish_drawing();
-      if (data[j] > data[j + 1]) await animateSwap(canvas.height, j, j + 1);
+      await sleep(200);
+
+      if (data[j] > data[j + 1]) {
+        await animateSwap(canvas.height, j, j + 1);
+      }
     }
   }
   gambarArray(canvas.height);
@@ -36,9 +42,13 @@ window.onload = () => {
   };
 
   btnMulai.onclick = async () => {
-    if (!input.value.trim()) return;
-    const parsed = input.value.split(",").map(x => parseInt(x.trim()));
-    if (parsed.some(isNaN) || parsed.some(x => x <= 0)) return;
+    const parsed = input.value
+      .split(",")
+      .map(x => parseInt(x.trim()))
+      .filter(x => !isNaN(x) && x > 0); // hanya angka positif
+
+    if (!parsed.length) return; // jika input kosong atau invalid
+
     data.splice(0, data.length, ...parsed);
     await startBubbleSort(canvas);
   };

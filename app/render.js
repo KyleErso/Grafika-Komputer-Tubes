@@ -11,19 +11,15 @@ export function gambarArray(h, a = -1, b = -1) {
 }
 
 
-// Swap 1-1 dengan highlight halus
+// Animasi penukaran dua batang pakai drawing dan delay
 export async function animateSwap(h, iA, iB) {
-  // 1Highlight kedua bar
   gambarArray(h, iA, iB);
   finish_drawing();
   await new Promise(r => setTimeout(r, 500));
-  // Tukar data
   [data[iA], data[iB]] = [data[iB], data[iA]];
-  // Highlight lagi setelah swap
   gambarArray(h, iA, iB);
   finish_drawing();
   await new Promise(r => setTimeout(r, 500));
-  // Gambar normal tanpa highlight
   gambarArray(h);
   finish_drawing();
 }
